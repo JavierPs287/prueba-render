@@ -1,0 +1,30 @@
+# Ignorar node_modules
+fe-esimedia/node_modules
+fe-esimedia/dist
+fe-esimedia/.angular
+
+# Ignorar archivos de build de Maven
+be-esimedia/target
+be-esimedia/.mvn/wrapper/maven-wrapper.jar
+
+# Ignorar archivos de Git
+.git
+.gitignore
+
+# Ignorar archivos de IDE
+.vscode
+.idea
+*.iml
+
+# Ignorar archivos de log
+*.log
+
+# Ignorar archivos temporales
+*.tmp
+*.bak
+
+# Ignorar diagramas
+diagramas/
+
+# Ignorar README del proyecto raíz
+README.md

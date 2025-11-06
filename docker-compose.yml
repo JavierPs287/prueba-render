@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  esimedia-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: esimedia-container
+    ports:
+      - "8081:8081"
+    environment:
+      # Configuración de MongoDB
+      - SPRING_DATA_MONGODB_URI=mongodb+srv://prueba:prueba@esimediadev.krctjsb.mongodb.net
+      - SPRING_DATA_MONGODB_DATABASE=esimedia_test
+      # Configuración del servidor
+      - SERVER_PORT=8081
+      # Configuración JWT (opcional, puedes cambiar la clave)
+      - JWT_SECRET=clave_super_secreta_para_generar_tokens_jwt_muy_segura
+    restart: unless-stopped
+    networks:
+      - esimedia-network
+
+networks:
+  esimedia-network:
+    driver: bridge
