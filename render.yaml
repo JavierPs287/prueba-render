@@ -24,7 +24,7 @@ services:
       - key: SPRING_DATA_MONGODB_URI
         sync: false # Configura esto manualmente en el dashboard de Render
       - key: SPRING_DATA_MONGODB_DATABASE
-        value: esimedia_prod
+        value: esimedia_test
       - key: SERVER_PORT
         value: 8081
       - key: JWT_SECRET
