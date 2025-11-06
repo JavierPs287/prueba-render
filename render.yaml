@@ -22,7 +22,7 @@ services:
     # Variables de entorno
     envVars:
       - key: SPRING_DATA_MONGODB_URI
-        sync: false # Configura esto manualmente en el dashboard de Render
+        sync: mongodb+srv://prueba:prueba@esimediadev.krctjsb.mongodb.net
       - key: SPRING_DATA_MONGODB_DATABASE
         value: esimedia_test
       - key: SERVER_PORT
