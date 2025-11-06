@@ -1,0 +1,39 @@
+# Render Blueprint para ESI-MEDIA
+# Este archivo configura el despliegue automático en Render
+
+services:
+  # Servicio Web (Docker)
+  - type: web
+    name: esimedia-app
+    runtime: docker
+    region: frankfurt # Puedes cambiar a: oregon, frankfurt, singapore, etc.
+    plan: free # Opciones: free, starter, standard, pro
+    
+    # Repositorio y rama
+    branch: main
+    
+    # Dockerfile a usar
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    
+    # Puerto que expone tu aplicación
+    dockerCommand: java -jar app.jar
+    
+    # Variables de entorno
+    envVars:
+      - key: SPRING_DATA_MONGODB_URI
+        sync: false # Configura esto manualmente en el dashboard de Render
+      - key: SPRING_DATA_MONGODB_DATABASE
+        value: esimedia_prod
+      - key: SERVER_PORT
+        value: 8081
+      - key: JWT_SECRET
+        generateValue: true # Render generará un valor aleatorio seguro
+      - key: PORT
+        value: 8081
+    
+    # Health check
+    healthCheckPath: /
+    
+    # Auto-deploy
+    autoDeploy: true

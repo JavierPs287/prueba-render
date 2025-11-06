@@ -57,6 +57,8 @@ EXPOSE 8081
 ENV SPRING_DATA_MONGODB_URI=mongodb+srv://prueba:prueba@esimediadev.krctjsb.mongodb.net
 ENV SPRING_DATA_MONGODB_DATABASE=esimedia_test
 ENV SERVER_PORT=8081
+ENV PORT=8081
 
 # Comando para ejecutar la aplicación
-ENTRYPOINT ["java", "-jar", "app.jar"]
+# Usar la variable PORT si está disponible (Render la proporciona)
+ENTRYPOINT ["sh", "-c", "java -Dserver.port=${PORT:-8081} -jar app.jar"]
