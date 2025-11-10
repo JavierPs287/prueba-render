@@ -103,7 +103,17 @@ stages:
               options: '$(MAVEN_OPTS)'
               publishJUnitResults: true
               testResultsFiles: '$(BACKEND_PATH)/target/surefire-reports/TEST-*.xml'
-              codeCoverageToolOption: 'JaCoCo'
+              codeCoverageToolOption: 'None'
+              javaHomeOption: 'JDKVersion'
+              jdkVersionOption: '1.$(JAVA_VERSION)'
+          
+          # Generar reporte de cobertura JaCoCo manualmente
+          - task: Maven@3
+            displayName: 'Generate JaCoCo Report'
+            inputs:
+              mavenPomFile: '$(BACKEND_PATH)/pom.xml'
+              goals: 'jacoco:report'
+              options: '$(MAVEN_OPTS)'
               javaHomeOption: 'JDKVersion'
               jdkVersionOption: '1.$(JAVA_VERSION)'
 
